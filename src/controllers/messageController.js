@@ -3,17 +3,24 @@ const Message = require("../models/messageModel");
 
 
 const createMessage = async (req, res) => {
+
+     const {title,content,type } = req.body;
+     if(!title || !content || !type ||typeof title !== "string" || typeof content!== "string") {
+    return response.status(400).json({message:"Le corps de la requête doit contenir name et description, en string", error:true})
+  }
   try {
-    console.log("BODY =", req.body); 
-
-    const message = await Message.create(req.body);
-
-    res.status(201).json(message);
+   
+       const newMessage = await Message.create({title:title,content:content})
+   
+        response.status(201).json({message:"Le personnage a été creé", message:newMessage})
+   
   } catch (error) {
     console.log("ERREUR =", error); 
     res.status(500).json({ error: error.message });
   }
 };
+
+
 
 
 const getMessage = async (req, res) => {

@@ -1,15 +1,21 @@
-const { DataTypes } = require('sequelize');
-const { sequelize}= require("../db");
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("../db"); // ✅ correction
 
-const Message = sequelize.define(
-    'message',
-     {
-  title: DataTypes.STRING,
-  content: DataTypes.TEXT,
+const Message = sequelize.define("Message", {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
   type: {
     type: DataTypes.STRING,
-    defaultValue: 'public'
+    defaultValue: "public"
   }
+}, {
+  timestamps: true
 });
 
 module.exports = Message;
