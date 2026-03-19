@@ -4,13 +4,13 @@ const Message = require("../models/messageModel");
 
 const createMessage = async (req, res) => {
   try {
-    console.log("BODY =", req.body); // 🔥
+    console.log("BODY =", req.body); 
 
     const message = await Message.create(req.body);
 
     res.status(201).json(message);
   } catch (error) {
-    console.log("ERREUR =", error); // 🔥
+    console.log("ERREUR =", error); 
     res.status(500).json({ error: error.message });
   }
 };
