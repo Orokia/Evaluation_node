@@ -5,6 +5,7 @@ const messageRouter = require('./routers/messageRouter');
 
 const port= process.env.PORT;
 const { connectionTodb } = require('./db');
+app.use(express.json()); 
 
 connectionTodb(); 
 

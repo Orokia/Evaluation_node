@@ -12,7 +12,7 @@ const createMessage = async (req, res) => {
    
        const newMessage = await Message.create({title:title,content:content})
    
-        response.status(201).json({message:"Le personnage a été creé", message:newMessage})
+        res.status(201).json({message:"Le personnage a été creé", message:newMessage})
    
   } catch (error) {
     console.log("ERREUR =", error); 
