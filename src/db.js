@@ -5,15 +5,17 @@ const DB_url = process.env.ENV === "DEV"
   : process.env.DB_PROD;
 
 const sequelize = new Sequelize(DB_url, {
-  dialect: 'mysql' // 🔥 AJOUT OBLIGATOIRE
+  dialect: 'mysql' 
 });
 
 async function connectionTodb(){
   try {
     await sequelize.authenticate();
-    console.log('Connection OK 🚀');
+    console.log('Connection OK ');
 
-    await sequelize.sync({ force: true });
+    // 🔥 AJOUT IMPORTANT
+    await sequelize.sync({ alter: true });
+    console.log("Tables synchronisées ✅");
 
   } catch (error) {
     console.error('Erreur DB:', error);
