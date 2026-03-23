@@ -25,7 +25,7 @@ const relation = async (req, res) => {
       });
     }
 
-    // 🔥 correction ici
+
     await message.setUser(user);
 
     res.json({

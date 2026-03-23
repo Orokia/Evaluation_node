@@ -13,9 +13,8 @@ async function connectionTodb(){
     await sequelize.authenticate();
     console.log('Connection OK ');
 
-    // 🔥 AJOUT IMPORTANT
     await sequelize.sync({ alter: true });
-    console.log("Tables synchronisées ✅");
+    console.log("Tables synchronisées ");
 
   } catch (error) {
     console.error('Erreur DB:', error);
